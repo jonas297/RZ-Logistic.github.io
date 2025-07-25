@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fletes Rápidos y Seguros</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="banner">
+    <img src="recursos/img/logo2.png" alt="Logo Tico" class="logo" />
+    <span class="titulo-banner">RZ Logistic</span>
+  </div>
+
+  <header class="encabezado">
+    <h1>Tu carga, en buenas manos</h1>
+  </header>
+
+  <div class="contenedor-principal">
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html" id="link-inicio">Inicio</a></li>
+        <li><a href="subPaginas/servicios.html" id="link-servicios">Servicios</a></li>
+        <li><a href="subPaginas/precios.html" id="link-precios">Precios</a></li>
+        <li><a href="subPaginas/contacto.html" id="link-contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <main class="contenido">
+
+      <!-- Carrusel -->
+      <div class="carrusel">
+        <div class="carrusel-inner" id="carrusel-inner">
+          <div class="carrusel-item"><img src="recursos/img/estaquita1.jpg" alt="Estaquita 1" /></div>
+          <div class="carrusel-item"><img src="recursos/img/estaquita2.jpg" alt="Estaquita 2" /></div>
+          <div class="carrusel-item"><img src="recursos/img/estaquita3.jpg" alt="Estaquita 3" /></div>
+          <div class="carrusel-item"><img src="recursos/img/estaquita4.jpg" alt="Estaquita 4" /></div>
+          <div class="carrusel-item"><img src="recursos/img/estaquita5.jpg" alt="Estaquita 5" /></div>
+        </div>
+        <button class="carrusel-boton izquierda" onclick="moverCarrusel(-1)">&#10094;</button>
+        <button class="carrusel-boton derecha" onclick="moverCarrusel(1)">&#10095;</button>
+      </div>
+
+      <!-- Artículos -->
+      <article>
+        <img src="recursos/img/img1.webp" alt="Imagen de flete" class="imagen-articulo" />
+        <h2>Fletes de Mueblería</h2>
+        <p>Transportamos tus muebles con cuidado y puntualidad. Contamos con personal capacitado para carga y descarga.</p>
+      </article>
+      <article>
+        <img src="recursos/img/per.avif" alt="Imagen de flete" class="imagen-articulo imagen-chica" />
+        <h2>¿Quiénes somos?</h2>
+        <p>Ofrecemos servicios de fletes confiables y seguros a lo largo del país. Nuestro equipo está comprometido con la puntualidad y la satisfacción del cliente.</p>
+      </article>
+      <article>
+        <img src="recursos/img/fru.webp" alt="Imagen de flete" class="imagen-articulo" />
+        <h2>Fletes de Frutas y Verduras</h2>
+        <p>Servicio ideal para comerciantes y agricultores. Camiones refrigerados disponibles para conservar la calidad de tus productos.</p>
+      </article>
+      <article>
+        <h2>¿Por qué elegirnos?</h2>
+        <p>Contamos con vehículos modernos, personal capacitado y tarifas competitivas.</p>
+      </article>
+    </main>
+
+    <aside class="aside">
+      <h3>¿Por qué elegirnos?</h3>
+      <ul>
+        <li>Precios accesibles</li>
+        <li>Servicio 24/7</li>
+        <li>Fletes locales y foráneos</li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    &copy; 2025 Fletes Rápidos y Seguros. Todos los derechos reservados.
+  </footer>
+
+  <!-- Script del carrusel -->
+  <script>
+    let index = 0;
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const inner = document.getElementById("carrusel-inner");
+      const total = inner.children.length;
+
+      // Establecer ancho total y de cada item
+      inner.style.width = `${total * 100}%`;
+      Array.from(inner.children).forEach(child => {
+        child.style.flex = `0 0 ${100 / total}%`;
+      });
+
+      moverCarrusel(0);
+    });
+
+    function moverCarrusel(direccion) {
+      const inner = document.getElementById("carrusel-inner");
+      const total = inner.children.length;
+      index = (index + direccion + total) % total;
+      inner.style.transform = `translateX(-${(index * 100) / total}%)`;
+    }
+  </script>
+
+  <script>
+    window.addEventListener("load", () => {
+      const rutaActual = window.location.pathname.split("/").pop() || "index.html";
+
+      const enlaces = {
+        "index.html": "link-inicio",
+        "servicios.html": "link-servicios",
+        "precios.html": "link-precios",
+        "contacto.html": "link-contacto"
+      };
+
+      Object.entries(enlaces).forEach(([archivo, id]) => {
+        const enlace = document.getElementById(id);
+        if (!enlace) return;
+        if (rutaActual === archivo) {
+          // Quitar href para no recargar si ya en esa página
+          enlace.removeAttribute("href");
+          enlace.style.cursor = "default";
+        }
+      });
+
+      // Mostrar alerta solo una vez por sesión y página
+      const claveSesion = `alertMostrado_${rutaActual}`;
+      if (!sessionStorage.getItem(claveSesion)) {
+        alert("¡Bienvenido a RZ Logistic! Gracias por visitarnos.");
+        sessionStorage.setItem(claveSesion, "true");
+      }
+    });
+  </script>
+
+</body>
+</html>
