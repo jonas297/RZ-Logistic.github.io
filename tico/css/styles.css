@@ -1,0 +1,243 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Banner */
+.banner {
+  background-image: url("../recursos/img/nissan.jpg");
+  background-size: cover;         /* ajusta la imagen al tamaño del banner */
+  background-position: center;    /* centra la imagen */
+  background-repeat: no-repeat;   /* evita que se repita */
+  color: blue;
+  padding: 20px;
+  font-size: 24px;
+  position: relative;
+  height: 200px;
+  font-family: Georgia, serif;
+  overflow: hidden;               /* oculta cualquier desborde visual */
+}
+
+
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90px; /* ajusta según tu logo */
+  width: auto;
+  font-weight: normal; /* elimina el peso de fuente que no aplica a imagen */
+  font-size: initial; /* elimina tamaño de fuente */
+}
+
+
+/* Ya no necesitas height en .logo, eliminé la regla duplicada */
+
+.titulo-banner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+}
+
+/* Encabezado */
+.encabezado {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400'%3E%3Crect fill='%23004080' width='1200' height='400'/%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M60 100h40v20H60zM70 90h20v10H70z'/%3E%3Cpath d='M250 150h40v30h-40zM260 140h20v10h-20z'/%3E%3Cpath d='M450 100l20-20 20 20-20 20z'/%3E%3Ccircle cx='650' cy='150' r='20'/%3E%3Cpath d='M830 90h40v20h-40zM840 80h20v10h-20z'/%3E%3Cpath d='M1000 120h30v30h-30zM1010 110h10v10h-10z'/%3E%3Cpath d='M1150 180l15-15 15 15-15 15z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 15px 5px;
+  position: relative;
+  font-size: 20px;
+}
+
+/* Grid principal */
+.contenedor-principal {
+  display: grid;
+  grid-template-areas:
+    "nav contenido aside"
+    "nav contenido aside";
+  grid-template-columns: 0.8fr 3.4fr 0.8fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Navegación */
+.nav {
+  grid-area: nav;
+  background-color: #f2f2f2;
+  padding: 15px;
+}
+
+.nav ul {
+  list-style: none;
+}
+
+.nav ul li {
+  margin-bottom: 10px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+.nav a:hover {
+  background-color: #004080;
+  color: white;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Contenido principal */
+.contenido {
+  grid-area: contenido;
+}
+
+.contenido article {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #004080;
+}
+
+.contenido article h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.contenido article p {
+  margin-bottom: 15px;
+}
+
+/* Imagen per.avif (solo si la usas) */
+.imagen-articulo[src*="per.avif"] {
+  width: 200px;
+  height: auto;
+}
+
+/* Imagen pulgar.webp alineada a la derecha */
+.img-derecha {
+  float: right;
+  margin: 0 70px 10px 15px; /* aumenta el margen derecho para separarla más del borde */
+  width: 250px;  /* ancho más grande */
+  height: auto;  /* mantiene proporción */
+}
+
+
+/* Aside */
+.aside {
+  grid-area: aside;
+  background-color: #f4f4f4;
+  padding: 15px;
+}
+
+/* Footer */
+.footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Contacto - Teléfonos con iconos centrados */
+.contacto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 10px;
+  margin-top: 100px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.contacto .telefono,
+.contacto .whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.contacto .telefono span,
+.contacto .whatsapp span {
+  display: block;
+  text-align: center;
+  font-size: 25px;    /* Tamaño del número */
+}
+
+.icono {
+  width: 30px;
+  height: 30px;
+}
+
+/* Carrusel */
+.carrusel {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  overflow: hidden;
+  margin: 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  background-color: #fff;
+}
+
+.carrusel-inner {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carrusel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 100%;
+}
+
+.carrusel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carrusel-boton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 20%;
+}
+
+.carrusel-boton.izquierda {
+  left: 10px;
+}
+
+.carrusel-boton.derecha {
+  right: 10px;
+}
+
+.carrusel-boton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
